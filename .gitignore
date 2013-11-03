@@ -1,0 +1,12 @@
+/config/config.php
+/config/build.settings
+bin
+*.sass-cache*
+composer.phar
+phing.phar
+phpunit.phar
+vendor
+*.swp
+.DS_Store
+.vagrant
+nohup.out
