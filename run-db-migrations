@@ -1,0 +1,3 @@
+#!/bin/bash
+
+php doctrine-migrations.phar migrations:migrate --db-configuration=config/doctrine-migrations.php --configuration=config/doctrine-migrations.yml

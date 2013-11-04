@@ -72,5 +72,6 @@
     </target>
   
     <target name="run-database-migrations">
+        <exec command="php doctrine-migrations.phar migrations:migrate --db-configuration=config/doctrine-migrations.php --configuration=config/doctrine-migrations.yml --no-interaction" />
     </target>
 </project>
