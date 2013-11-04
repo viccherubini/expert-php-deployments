@@ -42,7 +42,7 @@
     </target>
 
     <target name="compile-configuration">
-        <copy file="${root_path}/app/config/parameters.yml.template" tofile="${root_path}/app/config/parameters.yml" overwrite="true">
+        <copy file="${root_path}/config/config.php.template" tofile="${root_path}/config/config.php" overwrite="true">
             <filterchain>
                 <replacetokens begintoken="@@" endtoken="@@">
                     <token key="DB_HOST" value="${db_host}" />
