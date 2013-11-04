@@ -11,10 +11,8 @@ then
 fi
 
 # Change these accordingly.
-DBUSER="vitalstorm_metrics"
-DBNAME="vitalstorm_metrics"
-DBUSERTEST="vitalstorm_metrics_test"
-DBNAMETEST="vitalstorm_metrics_test"
+DBUSER="expert_php_deployments"
+DBNAME="expert_php_deployments"
 
 # Install some basic libraries and tools.
 apt-get update
@@ -73,8 +71,6 @@ sleep 5
 # Now that the Postgres server is started, created the user and database to use for this project.
 su - postgres -c "createuser -d -e -hlocalhost -Upostgres $DBUSER"
 su - postgres -c "createdb -E 'UTF-8' -O $DBUSER -hlocalhost -U$DBUSER $DBNAME"
-su - postgres -c "createuser -d -e -hlocalhost -Upostgres $DBUSERTEST"
-su - postgres -c "createdb -E 'UTF-8' -O $DBUSERTEST -hlocalhost -U$DBUSERTEST $DBNAMETEST"
 
 cd /opt/src/redis
 wget -q https://s3.amazonaws.com/build.brightmarch/redis-2.6.10.tar.gz
