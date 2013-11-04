@@ -1,8 +1,10 @@
-/config/config.php
 /config/build.settings
+/config/config.php
+/config/doctrine-migrations.php
 bin
 *.sass-cache*
 composer.phar
+doctrine-migrations.phar
 phing.phar
 phpunit.phar
 vendor

@@ -26,7 +26,7 @@
     </target>
   
     <target name="compile-vendors">
-        <available file="${vendor_path}" property="vendor_path_exists" value="1" />
+        <!--h<available file="${vendor_path}" property="vendor_path_exists" value="1" />
         <if>
             <equals arg1="${vendor_path_exists}" arg2="1" />
             <then>
@@ -34,7 +34,7 @@
             </then>
         </if>
 
-        <exec command="php composer.phar install --optimize-autoloader --no-ansi" checkreturn="true" passthru="true" />
+        <exec command="php composer.phar install --optimize-autoloader --no-ansi" checkreturn="true" passthru="true" />-->
     </target>
 
     <target name="compile-composer-cache">
@@ -55,6 +55,17 @@
 
                     <token key="BUILD_DATE" value="${build_date}" />
                     <token key="BUILD_TIMESTAMP" value="${build_timestamp}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
+
+        <copy file="${root_path}/config/doctrine-migrations.php.template" tofile="${root_path}/config/doctrine-migrations.php" overwrite="true">
+            <filterchain>
+                <replacetokens begintoken="@@" endtoken="@@">
+                    <token key="DB_HOST" value="${db_host}" />
+                    <token key="DB_NAME" value="${db_name}" />
+                    <token key="DB_USERNAME" value="${db_username}" />
+                    <token key="DB_PASSWORD" value="${db_password}" />
                 </replacetokens>
             </filterchain>
         </copy>
