@@ -1,6 +1,6 @@
-/config/build.settings
-/config/config.php
-/config/doctrine-migrations.php
+/config/app/build.settings
+/config/app/config.php
+/config/app/doctrine-migrations.php
 bin
 *.sass-cache*
 composer.phar
