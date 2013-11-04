@@ -26,7 +26,7 @@
     </target>
   
     <target name="compile-vendors">
-        <!--h<available file="${vendor_path}" property="vendor_path_exists" value="1" />
+        <available file="${vendor_path}" property="vendor_path_exists" value="1" />
         <if>
             <equals arg1="${vendor_path_exists}" arg2="1" />
             <then>
@@ -34,7 +34,7 @@
             </then>
         </if>
 
-        <exec command="php composer.phar install --optimize-autoloader --no-ansi" checkreturn="true" passthru="true" />-->
+        <exec command="php composer.phar install --optimize-autoloader --no-ansi" checkreturn="true" passthru="true" />
     </target>
 
     <target name="compile-composer-cache">
