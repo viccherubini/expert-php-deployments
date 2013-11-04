@@ -44,10 +44,6 @@ echo
 
 echo -e "${BLUE}[BEGIN]${ENDCOLOR} Building the Expert PHP Deployments project."
 
-if [ ! -d "log" ]; then
-    mkdir log
-fi
-
 php phing.phar -Dbuild_settings_file=config/build.settings build
 
 echo -e "${GREEN}[FINISHED]${ENDCOLOR} Building the Expert PHP Deployments project."
