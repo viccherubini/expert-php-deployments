@@ -25,17 +25,21 @@ echo
 echo -e "${BLUE}[INSTALL]${ENDCOLOR} Installing Composer."
 curl -s https://getcomposer.org/installer | php >/dev/null 2>&1
 chmod +x composer.phar
+echo
 
 echo -e "${BLUE}[INSTALL]${ENDCOLOR} Installing Doctrine Migrations."
 wget -qO doctrine-migrations.phar http://github.com/downloads/ericclemmons/migrations/doctrine-migrations.phar
-chmod +x composer.phar
+chmod +x doctrine-migrations.phar 
+echo
 
 echo -e "${BLUE}[INSTALL]${ENDCOLOR} Installing PHPUnit."
 wget -qO phpunit.phar https://phar.phpunit.de/phpunit.phar
+chmod +x phpunit.phar
 echo
 
 echo -e "${BLUE}[INSTALL]${ENDCOLOR} Installing Phing."
 wget -qO phing.phar http://www.phing.info/get/phing-2.6.1.phar
+chmod +x phing.phar 
 echo
 
 echo -e "${BLUE}[BEGIN]${ENDCOLOR} Building the Expert PHP Deployments project."
