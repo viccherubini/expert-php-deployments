@@ -8,3 +8,6 @@ define('DB_PASSWORD', '@@DB_PASSWORD@@');
 define('REDIS_HOST', '@@REDIS_HOST@@');
 define('REDIS_PORT', '@@REDIS_PORT@@');
 define('REDIS_DSN', '@@REDIS_HOST@@:@@REDIS_PORT@@');
+
+define('BUILD_DATE', '@@BUILD_DATE@@');
+define('BUILD_TIMESTAMP', '@@BUILD_TIMESTAMP@@');
