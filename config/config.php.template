@@ -1,0 +1,10 @@
+<?php
+
+define('DB_HOST', '@@DB_HOST@@');
+define('DB_NAME', '@@DB_NAME@@');
+define('DB_USERNAME', '@@DB_USERNAME@@');
+define('DB_PASSWORD', '@@DB_PASSWORD@@');
+
+define('REDIS_HOST', '@@REDIS_HOST@@');
+define('REDIS_PORT', '@@REDIS_PORT@@');
+define('REDIS_DSN', '@@REDIS_HOST@@:@@REDIS_PORT@@');

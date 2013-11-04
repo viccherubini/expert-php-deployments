@@ -1,0 +1,7 @@
+db_host=localhost
+db_name=
+db_username=
+db_password=
+
+redis_host=localhost
+redis_port=6379
