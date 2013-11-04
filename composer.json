@@ -1,0 +1,15 @@
+{
+    "name": "Expert PHP Deployments",
+    "authors": [
+        {
+            "name": "Vic Cherubini",
+            "email": "vcherubini@leftnode.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "ext-redis": "*",
+        "chrisboulton/php-resque": "dev-master"
+    },
+    "minimum-stability": "dev"
+}
