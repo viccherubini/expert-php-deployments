@@ -1,0 +1,7 @@
+db_host=localhost
+db_name=expert_php_deployments
+db_username=expert_php_deployments
+db_password=
+
+redis_host=localhost
+redis_port=6379

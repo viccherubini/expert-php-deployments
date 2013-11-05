@@ -1,72 +1,59 @@
 <?php
 
+use Doctrine\DBAL\Configuration;
+use Doctrine\DBAL\DriverManager;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+#echo $request->getPathInfo();
+
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../config/app/config.php';
 
+// Get basic HTTP request information.
+$request = Request::createFromGlobals();
+
 // Create a connection to Postgres.
-$postgres = new PDO(DB_DSN);
+#$postgres = new PDO(DB_DSN);
 
 // Create a connection to Redis.
 $redis = new Redis;
 $redis->connect(REDIS_HOST, REDIS_PORT);
 
-?>
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width">
+// Create a Twig instance.
+$loader = new Twig_Loader_Filesystem(TEMPLATE_PATH);
+$twig = new Twig_Environment($loader);
 
-    <title>Expert PHP Deployments Sample Application</title>
+// Get the total number of raw visitors to the page.
+$totalVisitors = (int)$redis->get('totalVisitors');
+$redis->incr('totalVisitors');
 
-    <link rel="stylesheet" href="/assets/css/expertphpdeployments.css">
-</head>
-<body>
-    <?php
-    // Get the total number of raw visitors to the page.
-    $totalVisitors = (int)$redis->get('totalVisitors');
-    $redis->incr('totalVisitors');
+// Save the server details to the database.
+/*$datetime = date('Y-m-d H:i:s');
+$status = 1;
+$query = "INSERT INTO visitor_detail (
+        created_at, updated_at, status, ip_address,
+        request_method, user_agent
+    ) VALUES (
+        ?, ?, ?, ?,
+        ?, ?
+    )";
 
-    // Save the server details to the database.
-    $query = "INSERT INTO visitor_detail (
-            created_at, updated_at, status, ip_address,
-            request_method, user_agent
-        ) VALUES (
-            CURRENT_TIMESTAMP(0), CURRENT_TIMESTAMP(0), 1, ?,
-            ?, ?
-        )";
+$parameters = [
+    1 => $datetime,
+    2 => $datetime,
+    3 => $status,
+    4 => '',
+    5 => '',
+    6 => ''
+];
 
-    $stmt = $postgres->prepare($query);
-    $stmt->bindValue(1, $_SERVER['REMOTE_ADDR']);
-    $stmt->bindValue(2, $_SERVER['REQUEST_METHOD']);
-    $stmt->bindValue(3, $_SERVER['HTTP_USER_AGENT']);
-    $stmt->execute();
-    ?>
+$stmt = $postgres->prepare($query);
+$stmt->execute($parameters);*/
 
-    <div id="wrapper">
-        <h1>Welcome to the <em>Expert PHP Deployments</em> Sample Application</h1>
-        <p>
-            There have been <strong><?php echo($totalVisitors); ?></strong> visitors here before you.
-        </p>
+$parameters = [
+    'totalVisitors' => $totalVisitors
+];
 
-        <h2>Your Details</h2>
-        <ul>
-            <li>
-                <strong>IP Address</strong>: <?php echo($_SERVER['REMOTE_ADDR']); ?>
-            </li>
-            <li>
-                <strong>Request Method</strong>: <?php echo($_SERVER['REQUEST_METHOD']); ?>
-            </li>
-            <li>
-                <strong>User Agent</strong>: <?php echo($_SERVER['HTTP_USER_AGENT']); ?>
-            </li>
-        </ul>
-
-        <p class="no-margin" align="center">
-            <a href="http://brightmarch.com/expert-php-deployments/">Purchase the <em><strong>Expert PHP Deployments</strong></em> Book</a>
-        </p>
-    </div>
-
-</body>
-</html>
+echo $twig->render('index.html', $parameters);

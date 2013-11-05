@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'template_path' => __DIR__ . '/../templates/',
+    'build_date' => '@@BUILD_DATE@@',
+    'build_timestamp' => '@@BUILD_TIMESTAMP@@'
+];

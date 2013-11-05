@@ -9,6 +9,8 @@
     "require": {
         "php": ">=5.5.0",
         "ext-redis": "*",
+        "doctrine/dbal": "2.5.*@dev",
+        "symfony/http-foundation": "2.3.*@dev",
         "twig/twig": "1.*"
     },
     "minimum-stability": "dev"
