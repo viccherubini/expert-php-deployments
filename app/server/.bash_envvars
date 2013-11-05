@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export PS1="[\[\033[01;32m\]vagrant:\w\[\033[00m\]] (\[\033[01;31m\]\u@\h \$(date +%H:%M:%S)\[\033[00m\])# "
+export PATH=$HOME/bin:$PATH
