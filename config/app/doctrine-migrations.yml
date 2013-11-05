@@ -1,4 +1,4 @@
 name: Expert PHP Deployments
 migrations_namespace: DoctrineMigrations
 table_name: _migrations
-migrations_directory: config/DoctrineMigrations
+migrations_directory: config/app/doctrine-migrations

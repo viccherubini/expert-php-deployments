@@ -2,8 +2,7 @@
 <project name="Expert PHP Deployments" default="build">
 
     <resolvepath propertyName="root_path" file="./" />
-    <resolvepath propertyName="config_path" file="./app/config/" />
-    
+
     <php function="date" returnProperty="build_date">
         <param value="c" />
     </php>
@@ -24,7 +23,7 @@
         <delete dir="${root_path}/vendor/" quiet="true" />
         <delete file="${root_path}/config/config.php" quiet="true" />
     </target>
-  
+
     <target name="compile-vendors">
         <available file="${vendor_path}" property="vendor_path_exists" value="1" />
         <if>
@@ -42,7 +41,7 @@
     </target>
 
     <target name="compile-configuration">
-        <copy file="${root_path}/config/config.php.template" tofile="${root_path}/config/config.php" overwrite="true">
+        <copy file="${root_path}/config/app/config.php.template" tofile="${root_path}/config/app/config.php" overwrite="true">
             <filterchain>
                 <replacetokens begintoken="@@" endtoken="@@">
                     <token key="DB_HOST" value="${db_host}" />
@@ -59,7 +58,7 @@
             </filterchain>
         </copy>
 
-        <copy file="${root_path}/config/doctrine-migrations.php.template" tofile="${root_path}/config/doctrine-migrations.php" overwrite="true">
+        <copy file="${root_path}/config/app/doctrine-migrations.php.template" tofile="${root_path}/config/app/doctrine-migrations.php" overwrite="true">
             <filterchain>
                 <replacetokens begintoken="@@" endtoken="@@">
                     <token key="DB_HOST" value="${db_host}" />
@@ -70,8 +69,8 @@
             </filterchain>
         </copy>
     </target>
-  
+
     <target name="run-database-migrations">
-        <exec command="php doctrine-migrations.phar migrations:migrate --db-configuration=config/doctrine-migrations.php --configuration=config/doctrine-migrations.yml --no-interaction" />
+        <exec command="php doctrine-migrations.phar migrations:migrate --db-configuration=config/app/doctrine-migrations.php --configuration=config/app/doctrine-migrations.yml --no-interaction" />
     </target>
 </project>
