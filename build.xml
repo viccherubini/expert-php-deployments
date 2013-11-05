@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Expert PHP Deployments" default="build">
-
     <resolvepath propertyName="root_path" file="./" />
 
     <php function="date" returnProperty="build_date">
