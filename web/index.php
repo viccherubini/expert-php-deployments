@@ -6,8 +6,6 @@ use Doctrine\DBAL\DriverManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-#echo $request->getPathInfo();
-
 require __DIR__ . '/../vendor/autoload.php';
 
 // Include all of the configuration files into PHP array.s
@@ -34,31 +32,15 @@ $totalVisitors = (int)$redis->get('totalVisitors');
 $redis->incr('totalVisitors');
 
 // Save the server details to the database.
-/*$datetime = date('Y-m-d H:i:s');
-$status = 1;
-$query = "INSERT INTO visitor_detail (
-        created_at, updated_at, status, ip_address,
-        request_method, user_agent
-    ) VALUES (
-        ?, ?, ?, ?,
-        ?, ?
-    )";
+$postgres->insert('visitor_detail', [
+    'created_at' => date('Y-m-d H:i:s'),
+    'ip_address' => $request->getClientIp(),
+    'request_method' => $request->getMethod(),
+    'user_agent' => $request->server->get('HTTP_USER_AGENT')
+]);
 
 $parameters = [
-    1 => $datetime,
-    2 => $datetime,
-    3 => $status,
-    4 => '',
-    5 => '',
-    6 => ''
-];
-
-$stmt = $postgres->prepare($query);
-$stmt->execute($parameters);*/
-
-$parameters = [
-    'totalVisitors' => $totalVisitors,
     'buildDate' => $configApp['build_date']
 ];
 
-echo $twig->render('index.html', $parameters);
+echo($twig->render('index.html', $parameters));

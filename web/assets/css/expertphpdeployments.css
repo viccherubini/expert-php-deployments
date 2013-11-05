@@ -24,19 +24,6 @@ header a {
     text-decoration: none;
 }
 
-/*header a[class^="icon"] {
-    display: block;
-    font-size: 1.75em;
-    font-weight: normal;
-
-    float: right;
-    margin-right: 1em;
-}
-
-header a[class^="icon"]:first-child {
-    margin-right: 0;
-}*/
-
 header h1,
 header h2 {
     line-height: 1;
@@ -89,13 +76,35 @@ article p.meta {
     margin: 0 0 1.5em 0;
 }
 
+pre {
+    background-color: #eeeeff;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    font-size: 0.875em;
+    line-height: 1.25em;
+    margin-bottom: 1.25em;
+    padding: .5em;
+}
+
+p + .highlight pre {
+}
+
+code {
+    background-color: #eeeeff;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    font-weight: normal;
+    padding: 0 .2em;
+}
+
+pre code {
+    border: none;
+    padding: 0;
+}
+
 ol li,
 ul li {
     line-height: 1.5;
-}
-
-#menu {
-    margin-top: 1em;
 }
 
 .column {

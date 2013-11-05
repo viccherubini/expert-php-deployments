@@ -7,6 +7,7 @@
 
     <title>Expert PHP Deployments Sample Application</title>
 
+    <link rel="stylesheet" href="/assets/css/normalize.css">
     <link rel="stylesheet" href="/assets/css/expertphpdeployments.css">
 
     <script type="text/javascript" src="//use.typekit.net/oxd8fir.js"></script>
@@ -27,9 +28,23 @@
     <main>
         <article>
             <h2>Application Details</h2>
-            <p class="meta">{{ buildDate }}</p>
+            <p class="meta">Build Date: {{ buildDate }}</p>
 
-            <p>stuff about this app.</p>
+            <p>
+                You are viewing the sample app that is bundled with the <em>Expert PHP Deployments</em> book. This application is a mix of raw PHP, Symfony, and Doctrine components. It is kept intentionally simple for instructional purposes. It is deployed using Capistrano and Phing.
+            </p>
+
+            <h3>Application Layout</h3>
+
+
+            <h3>More Information</h3>
+            <p>
+                You can find out more about this webpage and how to become an expert at PHP application deployment with the book <a href="https://leftnode.com/expert-php-deployment/"><em>Expert PHP Deployment</em></a>.
+            </p>
+
+            <p align="center">
+                <small>&copy; {{ 'now'|date('Y') }} Vic Cherubini and Bright March, LLC.</small>
+            </p>
         </article>
     </main>
 

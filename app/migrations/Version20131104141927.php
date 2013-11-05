@@ -13,8 +13,6 @@ class Version20131104141927 extends AbstractMigration
             CREATE TABLE visitor_detail (
                 id serial NOT NULL,
                 created_at timestamp without time zone NOT NULL,
-                updated_at timestamp without time zone NOT NULL,
-                status smallint NOT NULL DEFAULT 0,
                 ip_address character varying(96),
                 request_method character varying(96),
                 user_agent character varying(1024),
@@ -22,7 +20,6 @@ class Version20131104141927 extends AbstractMigration
             ) WITH (OIDS=FALSE)
         ");
 
-        $this->_addSql("CREATE INDEX visitor_detail_status_idx ON visitor_detail (status)");
         $this->_addSql("CREATE INDEX visitor_detail_ip_address_idx ON visitor_detail (ip_address)");
     }
 
