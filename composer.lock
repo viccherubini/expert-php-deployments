@@ -3,139 +3,56 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ef08072e4b9cff384c311af194853bc0",
+    "hash": "b9bf18e53bac4b6db8012d43e0d2f54b",
     "packages": [
         {
-            "name": "chrisboulton/php-resque",
+            "name": "twig/twig",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/chrisboulton/php-resque.git",
-                "reference": "b0843f4dba7e914728539c4001b8325b68c44354"
+                "url": "https://github.com/fabpot/Twig.git",
+                "reference": "3a6ffbb0f09f4b6311d30947812f57906e285371"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chrisboulton/php-resque/zipball/b0843f4dba7e914728539c4001b8325b68c44354",
-                "reference": "b0843f4dba7e914728539c4001b8325b68c44354",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/3a6ffbb0f09f4b6311d30947812f57906e285371",
+                "reference": "3a6ffbb0f09f4b6311d30947812f57906e285371",
                 "shasum": ""
             },
             "require": {
-                "colinmollenhour/credis": "1.2.*",
-                "ext-pcntl": "*",
-                "php": ">=5.3.0",
-                "psr/log": "1.0.0"
+                "php": ">=5.2.4"
             },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "suggest": {
-                "ext-proctitle": "Allows php-resque to rename the title of UNIX processes to show the status of a worker.",
-                "ext-redis": "Native PHP extension for Redis connectivity. Credis will automatically utilize when available."
-            },
-            "bin": [
-                "bin/resque"
-            ],
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.15-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
-                    "Resque": "lib"
+                    "Twig_": "lib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
-                    "name": "Chris Boulton",
-                    "email": "chris@bigcommerce.com"
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com"
                 }
             ],
-            "description": "Redis backed library for creating background jobs and processing them later. Based on resque for Ruby.",
-            "homepage": "http://www.github.com/chrisboulton/php-resque/",
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
             "keywords": [
-                "background",
-                "job",
-                "redis",
-                "resque"
+                "templating"
             ],
-            "time": "2013-09-07 01:04:56"
-        },
-        {
-            "name": "colinmollenhour/credis",
-            "version": "1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/colinmollenhour/credis.git",
-                "reference": "e8a666d1d5cf442c81792bf6e69fabf3b5255ee8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/colinmollenhour/credis/zipball/e8a666d1d5cf442c81792bf6e69fabf3b5255ee8",
-                "reference": "e8a666d1d5cf442c81792bf6e69fabf3b5255ee8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "Client.php",
-                    "Cluster.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Colin Mollenhour",
-                    "email": "colin@mollenhour.com"
-                }
-            ],
-            "description": "Credis is a lightweight interface to the Redis key-value store which wraps the phpredis library when available for better performance.",
-            "homepage": "https://github.com/colinmollenhour/credis",
-            "time": "2013-03-19 02:57:04"
-        },
-        {
-            "name": "psr/log",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/log.git",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Psr\\Log\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for logging libraries",
-            "keywords": [
-                "log",
-                "psr",
-                "psr-3"
-            ],
-            "time": "2012-12-21 11:40:51"
+            "time": "2013-11-03 19:14:49"
         }
     ],
     "packages-dev": [
@@ -145,9 +62,9 @@
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "chrisboulton/php-resque": 20
-    },
+    "stability-flags": [
+
+    ],
     "platform": {
         "php": ">=5.5.0",
         "ext-redis": "*"

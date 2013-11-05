@@ -9,7 +9,7 @@
     "require": {
         "php": ">=5.5.0",
         "ext-redis": "*",
-        "chrisboulton/php-resque": "dev-master"
+        "twig/twig": "1.*"
     },
     "minimum-stability": "dev"
 }
