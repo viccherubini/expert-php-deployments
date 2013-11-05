@@ -1,3 +1,0 @@
-#!/bin/bash
-
-#VVERBOSE=1 QUEUE=* APP_INCLUDE=app/bootstrap.php.cache INTERVAL=5 php bin/resque
