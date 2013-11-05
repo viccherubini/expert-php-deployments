@@ -8,25 +8,30 @@
     <title>Expert PHP Deployments Sample Application</title>
 
     <link rel="stylesheet" href="/assets/css/expertphpdeployments.css">
+
+    <script type="text/javascript" src="//use.typekit.net/oxd8fir.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
 
-    <div id="wrapper">
-        <h1>Welcome to the <em>Expert PHP Deployments</em> Sample Application</h1>
+    <header>
+        <section>
+            <div class="column">
+                <h1><a href="/"><em>Expert PHP Deployments</em></a></h1>
+                <h2>Sample Application</h2>
+            </div>
+            <br class="clear">
+        </section>
+    </header>
 
-        <p>
-            There have been <strong>{{ totalVisitors }}</strong> visitors here before you.
-        </p>
-        <p>
-            Your <code>$_SERVER</code> details have been saved to Postgres in a table named <code>visitor_detail</code>.
-        </p>
+    <main>
+        <article>
+            <h2>Application Details</h2>
+            <p class="meta">{{ buildDate }}</p>
 
-        <p class="no-margin" align="center">
-            <a href="http://brightmarch.com/expert-php-deployments/">
-                Purchase the <em><strong>Expert PHP Deployments</strong></em> Book
-            </a>
-        </p>
-    </div>
+            <p>stuff about this app.</p>
+        </article>
+    </main>
 
 </body>
 </html>

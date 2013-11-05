@@ -13,13 +13,13 @@ ENDCOLOR="\033[0m"
 echo -e "${BLUE}[BEGIN]${ENDCOLOR} Beginning Expert PHP Deployments development build process."
 echo
 
-echo -e "${BLUE}[CHECK]${ENDCOLOR} ./config/app/build.settings exists."
-if [ ! -f ./config/app/build.settings ]
+echo -e "${BLUE}[CHECK]${ENDCOLOR} ./app/config/build.settings exists."
+if [ ! -f ./app/config/build.settings ]
 then
-    echo -e "${RED}[FAILURE]${ENDCOLOR} The ./config/app/build.settings file does not exist. Create it from ./config/app/build.settings.template."
+    echo -e "${RED}[FAILURE]${ENDCOLOR} The ./app/config/build.settings file does not exist. Create it from ./app/config/build.settings.template."
     exit 1
 fi
-echo -e "${GREEN}[OK]${ENDCOLOR} ./config/app/build.settings exists."
+echo -e "${GREEN}[OK]${ENDCOLOR} ./app/config/build.settings exists."
 echo
 
 echo -e "${BLUE}[INSTALL]${ENDCOLOR} Installing Composer."
@@ -41,7 +41,7 @@ echo
 
 echo -e "${BLUE}[BEGIN]${ENDCOLOR} Building the Expert PHP Deployments project."
 
-php phing.phar -Dbuild_settings_file=config/app/build.settings build
+php phing.phar -Dbuild_settings_file=app/config/build.settings build
 
 echo -e "${GREEN}[FINISHED]${ENDCOLOR} Building the Expert PHP Deployments project."
 

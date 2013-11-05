@@ -9,20 +9,24 @@ use Symfony\Component\HttpFoundation\Response;
 #echo $request->getPathInfo();
 
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../config/app/config.php';
+
+// Include all of the configuration files into PHP array.s
+$configApp = require __DIR__ . '/../app/config/config-app.php';
+$configPostgres = require __DIR__ . '/../app/config/config-postgres.php';
+$configRedis = require __DIR__ . '/../app/config/config-redis.php';
 
 // Get basic HTTP request information.
 $request = Request::createFromGlobals();
 
 // Create a connection to Postgres.
-#$postgres = new PDO(DB_DSN);
+$postgres = DriverManager::getConnection($configPostgres, new Configuration);
 
 // Create a connection to Redis.
 $redis = new Redis;
-$redis->connect(REDIS_HOST, REDIS_PORT);
+$redis->connect($configRedis['host'], $configRedis['port']);
 
 // Create a Twig instance.
-$loader = new Twig_Loader_Filesystem(TEMPLATE_PATH);
+$loader = new Twig_Loader_Filesystem($configApp['template_path']);
 $twig = new Twig_Environment($loader);
 
 // Get the total number of raw visitors to the page.
@@ -53,7 +57,8 @@ $stmt = $postgres->prepare($query);
 $stmt->execute($parameters);*/
 
 $parameters = [
-    'totalVisitors' => $totalVisitors
+    'totalVisitors' => $totalVisitors,
+    'buildDate' => $configApp['build_date']
 ];
 
 echo $twig->render('index.html', $parameters);

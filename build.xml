@@ -21,7 +21,9 @@
 
     <target name="clean">
         <delete dir="${root_path}/vendor/" quiet="true" />
-        <delete file="${root_path}/config/config.php" quiet="true" />
+        <delete file="${root_path}/app/config/config-app.php" quiet="true" />
+        <delete file="${root_path}/app/config/config-postgres.php" quiet="true" />
+        <delete file="${root_path}/app/config/config-redis.php" quiet="true" />
     </target>
 
     <target name="compile-vendors">
@@ -41,24 +43,16 @@
     </target>
 
     <target name="compile-configuration">
-        <copy file="${root_path}/config/app/config.php.template" tofile="${root_path}/config/app/config.php" overwrite="true">
+        <copy file="${root_path}/app/config/config-app.php.template" tofile="${root_path}/app/config/config-app.php" overwrite="true">
             <filterchain>
                 <replacetokens begintoken="@@" endtoken="@@">
-                    <token key="DB_HOST" value="${db_host}" />
-                    <token key="DB_NAME" value="${db_name}" />
-                    <token key="DB_USERNAME" value="${db_username}" />
-                    <token key="DB_PASSWORD" value="${db_password}" />
-
-                    <token key="REDIS_HOST" value="${redis_host}" />
-                    <token key="REDIS_PORT" value="${redis_port}" />
-
                     <token key="BUILD_DATE" value="${build_date}" />
                     <token key="BUILD_TIMESTAMP" value="${build_timestamp}" />
                 </replacetokens>
             </filterchain>
         </copy>
 
-        <copy file="${root_path}/config/app/doctrine-migrations.php.template" tofile="${root_path}/config/app/doctrine-migrations.php" overwrite="true">
+        <copy file="${root_path}/app/config/config-postgres.php.template" tofile="${root_path}/app/config/config-postgres.php" overwrite="true">
             <filterchain>
                 <replacetokens begintoken="@@" endtoken="@@">
                     <token key="DB_HOST" value="${db_host}" />
@@ -68,9 +62,18 @@
                 </replacetokens>
             </filterchain>
         </copy>
+
+        <copy file="${root_path}/app/config/config-redis.php.template" tofile="${root_path}/app/config/config-redis.php" overwrite="true">
+            <filterchain>
+                <replacetokens begintoken="@@" endtoken="@@">
+                    <token key="REDIS_HOST" value="${redis_host}" />
+                    <token key="REDIS_PORT" value="${redis_port}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
     </target>
 
     <target name="run-database-migrations">
-        <exec command="php doctrine-migrations.phar migrations:migrate --db-configuration=config/app/doctrine-migrations.php --configuration=config/app/doctrine-migrations.yml --no-interaction" />
+        <exec command="php doctrine-migrations.phar migrations:migrate --db-configuration=app/config/config-postgres.php --configuration=app/config/migrations.yml --no-interaction" />
     </target>
 </project>

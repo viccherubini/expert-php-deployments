@@ -1,6 +1,7 @@
-/config/app/build.settings
-/config/app/config.php
-/config/app/doctrine-migrations.php
+/app/config/build.settings
+/app/config/config-app.php
+/app/config/config-postgres.php
+/app/config/config-redis.php
 bin
 *.sass-cache*
 composer.phar
