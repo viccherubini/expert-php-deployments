@@ -4,7 +4,3 @@ return [
     'host' => '@@REDIS_HOST@@',
     'port' => '@@REDIS_PORT@@'
 ];
-
-#define('TEMPLATE_PATH', __DIR__ . '/templates/');
-#define('BUILD_DATE', '@@BUILD_DATE@@');
-#define('BUILD_TIMESTAMP', '@@BUILD_TIMESTAMP@@');
