@@ -40,7 +40,7 @@ tar -xzf ruby-2.0.0-p247.tar.gz
 cd ruby-2.0.0-p247
 ./configure
 make && make install
-gem install sass compass
+gem install capistrano -v 2.15.5
 
 # Create a postgres user that will manage everything Postgres.
 useradd --home-dir /home/postgres --create-home --shell /bin/bash --user-group postgres
