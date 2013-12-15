@@ -35,7 +35,7 @@ update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 mkdir -p /opt/src/{ruby,php,php-redis,redis,postgresql}
 
 cd /opt/src/ruby
-wget -q https://s3.amazonaws.com/build.brightmarch/ruby-2.0.0-p247.tar.gz
+wget -q https://s3.amazonaws.com/brightmarch.build/ruby-2.0.0-p247.tar.gz
 tar -xzf ruby-2.0.0-p247.tar.gz
 cd ruby-2.0.0-p247
 ./configure
@@ -46,7 +46,7 @@ gem install capistrano -v 2.15.5
 useradd --home-dir /home/postgres --create-home --shell /bin/bash --user-group postgres
 
 cd /opt/src/postgresql
-wget -q https://s3.amazonaws.com/build.brightmarch/postgresql-9.2.4.tar.bz2
+wget -q https://s3.amazonaws.com/brightmarch.build/postgresql-9.2.4.tar.bz2
 tar -xjf postgresql-9.2.4.tar.bz2
 cd postgresql-9.2.4
 ./configure --disable-debug --enable-thread-safety --with-gssapi --with-openssl --with-libxml --with-libxslt --with-ossp-uuid --with-python --without-bonjour
@@ -56,7 +56,7 @@ make world && make install
 su - postgres -c "initdb -D /home/postgres/cluster -E 'UTF-8'"
 
 # Install the Postgres init.d service script.
-wget -qO /etc/init.d/postgres https://s3.amazonaws.com/build.brightmarch/postgres
+wget -qO /etc/init.d/postgres https://s3.amazonaws.com/brightmarch.build/postgres
 chmod +x /etc/init.d/postgres
 update-rc.d postgres defaults
 /etc/init.d/postgres start
@@ -69,16 +69,16 @@ su - postgres -c "createuser -d -e -hlocalhost -Upostgres $DBUSER"
 su - postgres -c "createdb -E 'UTF-8' -O $DBUSER -hlocalhost -U$DBUSER $DBNAME"
 
 cd /opt/src/redis
-wget -q https://s3.amazonaws.com/build.brightmarch/redis-2.6.10.tar.gz
-tar -xzf redis-2.6.10.tar.gz
-cd redis-2.6.10
+wget -q https://s3.amazonaws.com/brightmarch.build/redis-2.8.0.tar.gz
+tar -xzf redis-2.8.0.tar.gz
+cd redis-2.8.0
 make && make install
 mkdir -p /etc/redis
 cp redis.conf /etc/redis/redis.conf
 sed -i 's/daemonize no/daemonize yes/g' /etc/redis/redis.conf
 
 # Install the Redis init.d service script.
-wget -qO /etc/init.d/redis https://s3.amazonaws.com/build.brightmarch/redis
+wget -qO /etc/init.d/redis https://s3.amazonaws.com/brightmarch.build/redis
 chmod +x /etc/init.d/redis
 update-rc.d redis defaults
 /etc/init.d/redis start
@@ -87,7 +87,7 @@ update-rc.d redis defaults
 sleep 5
 
 cd /opt/src/php
-wget -q https://s3.amazonaws.com/build.brightmarch/php-5.5.4.tar.gz
+wget -q https://s3.amazonaws.com/brightmarch.build/php-5.5.4.tar.gz
 tar -xzf php-5.5.4.tar.gz
 cd php-5.5.4
 ./configure --with-openssl --with-zlib --with-curl --enable-zip --with-xmlrpc --enable-soap --enable-sockets --with-pgsql --with-pdo-pgsql --with-mcrypt --enable-mbstring --with-libxml-dir --enable-intl --enable-pcntl --enable-opcache
@@ -107,9 +107,9 @@ echo "date.timezone=UTC" >> /usr/local/lib/php.ini
 
 # Add some helpful bash and vim files.
 cp /etc/skel/.profile /home/vagrant/.profile
-wget -qO /home/vagrant/.bash_aliases https://s3.amazonaws.com/build.brightmarch/.bash_aliases
-wget -qO /home/vagrant/.bash_envvars https://s3.amazonaws.com/build.brightmarch/.bash_envvars
-wget -qO /home/vagrant/.vimrc https://s3.amazonaws.com/build.brightmarch/.vimrc
+wget -qO /home/vagrant/.bash_aliases https://s3.amazonaws.com/brightmarch.build/.bash_aliases_vagrant
+wget -qO /home/vagrant/.bash_envvars https://s3.amazonaws.com/brightmarch.build/.bash_envvars_vagrant
+wget -qO /home/vagrant/.vimrc https://s3.amazonaws.com/brightmarch.build/.vimrc
 
 chown -R vagrant:vagrant /home/vagrant
 
