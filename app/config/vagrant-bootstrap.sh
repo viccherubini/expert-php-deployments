@@ -30,6 +30,10 @@ dpkg-reconfigure --frontend noninteractive tzdata
 locale-gen en_US.UTF-8
 update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
+# Update the default .profile so it includes the
+# PostgreSQL command line tools in the standard $PATH
+wget -qO /etc/skel/.profile https://s3.amazonaws.com/brightmarch.build/.profile
+
 # We will manually compile the most important packages ourselves
 # and the code for them is stored in /opt/src.
 mkdir -p /opt/src/{ruby,php,php-redis,redis,postgresql}
