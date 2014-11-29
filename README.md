@@ -3,4 +3,4 @@ This repository is meant to be used alongside the book _Expert PHP Deployments_.
 
 The code presented in here is quite basic and only displays a simple web page. The book, however, will teach you all of the secrets necessary to expertly deploy your PHP application.
 
-[expert-php-deployments]: http://growingsoftware.org/expert-php-deployments/
+[expert-php-deployments]: https://leftnode.org/posts/expert-php-deployments.html
